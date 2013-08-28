@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+ 
+<html lang="es">
+ 
+<head>
+    <title>WebApp</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link href='css/fullcalendar.css' rel='stylesheet' />
+    <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Voces' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="js/slider.js"></script>
+    <script type='text/javascript' src='js/fullcalendar.js'></script>
+    <script src='fullcalendar/fullcalendar.min.js'></script>
+    <script>
+
+      $(document).ready(function() {
+      
+        function redrawPeriod(startDate) {
+          var endDate = new Date(startDate);
+          endDate.setDate(endDate.getDate() + 28);
+
+          $(calendar).fullCalendar('select', startDate, endDate, true)
+        }
+
+        var calendar = $('#calendar').fullCalendar({
+          
+          dayClick: function(date, allDay, jsEvent, view) {
+            redrawPeriod(date);
+          }
+        });
+      });
+      $('a.smooth').on('click', function(e) {
+            var $link = $(this);
+            var anchor  = $link.attr('href');
+            $('#registrarme').stop().animate({
+              scrollTop: $(anchor).offset().top
+            }, 1000);
+          });
+    </script>
+
+</head>
+
+<body>
+
+  <header>
+    <nav id="navigation">
+        <a href="#registrarme" class="buttonNav">Registrarse</a>
+        <h1>
+        <a href="index.html"><span>WebApp</span></a>
+        </h1>
+    </nav>
+  </header>
+
+  <div id="container">
+        <img id="responsive" src="responsive.png">
+        <p>
+            Porque es util saber la fecha de tu proximo periodo, facil y sin <br/>necesidad de calcularlo vos misma te damos un pronostico de tu proximo período y ovulacion 
+            <br/> de acuerdo a tu fecha señalada. 
+            <a href="#registrarme" class="button">Registrarse</a>
+        </p>
+  <div class="sliderContainer">
+      <div id="slider">
+        <div class="slidesContainer">
+          <div class="slide"><img src="imgs/img1.png" /></div>
+          <div class="slide"><img src="imgs/img2.png" /></div>
+          <div class="slide"><img src="imgs/img3.png" /></div>
+          <div class="slide"><img src="imgs/img4.png" /></div>
+          <div class="slide"><img src="imgs/img5.png" /></div>
+        </div> 
+      </div> 
+      <p>
+        Porque es util saber la fecha de tu proximo periodo, facil y sin <br/>necesidad de calcularlo vos misma te damos un pronostico 
+      </p>
+    </div> 
+        <div id="registrarme" class="formRegistro">
+                     <form id="registrarme" method="get" action="" accept-charset="UTF-8">
+                         <fieldset>
+                               <legend>Datos para registrarte</legend>   
+                       <label for="text">Nombre</label>
+                                   <input type="text" size="30" id="nombre" name="nombre" required placeholder="Escribe tu nombre" />
+                       <label for="email">Email</label>
+                                   <input type="email" size="30" id="email"  name="email" required placeholder="Escribe tu email" />
+                       <label for="password">Contraseña</label>
+                                  <input type="password" size="30" id="Contraseña" name="Contraseña" required placeholder="Escribe tu Contraseña" />
+                      <label for="password">Confirmar Contraseña</label>
+                                  <input type="password" size="30" id="Confirmar Contraseña" name="Confirmar Contraseña" required placeholder="Confirmar tu Contraseña" />
+              <input class="buttonF" type="submit" value="Registrarme" name="submit" />
+        </div>
+    
+    <div id='calendar'>  
+    </div>
+  
+  </div>
+
+ <footer> 
+    <p>
+      Copyright 2013 WebApp. Todos los derechos reservados.
+    </p>
+ </footer>
+
+</body>
+
+</html>
