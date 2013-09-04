@@ -10,11 +10,10 @@
     <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Voces' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="js/slider.js"></script>
-    <script type='text/javascript' src='js/fullcalendar.js'></script>
-    <script src='js/fullcalendar/fullcalendar.min.js'></script>
+    <script type="text/javascript" src="js/popup.js"></script>
+    <script type="text/javascript" src='js/fullcalendar/fullcalendar.min.js'></script>
     <script>
 
       $(document).ready(function() {
@@ -35,14 +34,45 @@
             redrawPeriod(date);
           }
         });
+
+        function guardarUsuario() {
+          localStorage.setItem('usuario', JSON.stringify(usuario))
+        }
+
+        function obtenerUsuario() {
+          try {
+            return JSON.parse(localStorage.getItem('usuario'))
+          } catch (e) {
+            return null
+          }
+        }
+
+        // Esconder Registro si existe usuario
+        if(obtenerUsuario())
+          $("a#registrarse").hide()
+
+
+        // Evento registrar
+        $('form#registrarme').on('submit', function () {
+          var usuario = {}
+          var datos = $(this).serializeArray()
+          for(var i in datos) {
+            usuario[datos[i].name] = datos[i].value
+          }
+          guardarUsuario(usuario)
+          return false;
+        });
+
       });
+
       $('a.smooth').on('click', function(e) {
-            var $link = $(this);
-            var anchor  = $link.attr('href');
-            $('#registrarme').stop().animate({
-              scrollTop: $(anchor).offset().top
-            }, 1000);
-          });
+        var $link = $(this);
+        var anchor  = $link.attr('href');
+        $('#registrarme').stop().animate({
+          scrollTop: $(anchor).offset().top
+        }, 1000);
+      });
+
     </script>
 
 </head>
@@ -51,7 +81,7 @@
 
   <header>
     <nav id="navigation">
-        <a href="#registrarme" class="buttonNav">Registrarme</a>
+        <a href="#registrarme" id="registrarse" class="buttonNav">Registrarme</a>
         <h1>
         <a href="index.html"><span>WebApp</span></a>
         </h1>
@@ -63,9 +93,9 @@
         <p>
             Porque es util saber la fecha de tu proximo periodo, facil y sin <br/>necesidad de calcularlo vos misma te damos un pronostico de tu proximo período y ovulacion 
             <br/> de acuerdo a tu fecha señalada. 
-            <a href="#registrarme" class="button">Registrarme</a>
+            <a id="registrarse" href="#registrarme" class="button">Registrarme</a>
         </p>
-  <div class="sliderContainer">
+    <div class="sliderContainer">
       <div id="slider">
         <div class="slidesContainer">
           <div class="slide"><img src="imgs/img1.png" /></div>
@@ -78,8 +108,13 @@
       <p>
         Porque es util saber la fecha de tu proximo periodo, facil y sin <br/>necesidad de calcularlo vos misma te damos un pronostico 
       </p>
-    </div> 
-        <div id="registrarme" class="formRegistro">
+    </div>
+
+
+  <div id="bgpopUp" class="bgpopUp"></div>
+  
+      <div id="registrarme" class="formRegistro">
+                    <a href='#cerrar' id="cerrar">Cerrar</a>
                      <form id="registrarme" method="get" action="" accept-charset="UTF-8">
                          <fieldset>
                                <legend>Datos para registrarse</legend>   
@@ -88,12 +123,12 @@
                        <label for="email">Email</label>
                                    <input type="email" size="30" id="email"  name="email" required placeholder="Escribe tu email" />
                        <label for="password">Contraseña</label>
-                                  <input type="password" size="30" id="Contraseña" name="Contraseña" required placeholder="Escribe tu Contraseña" />
+                                  <input type="password" size="30" id="Contraseña" name="password" required placeholder="Escribe tu Contraseña" />
                       <label for="password">Confirmar Contraseña</label>
-                                  <input type="password" size="30" id="Confirmar Contraseña" name="Confirmar Contraseña" required placeholder="Confirmar tu Contraseña" />
+                                  <input type="password" size="30" id="Confirmar Contraseña" name="password_confirmation" required placeholder="Confirmar tu Contraseña" />
               <input class="buttonF" type="submit" value="Registrarme" name="submit" />
         </div>
-    
+
     <div id='calendar'>  
     </div>
   
