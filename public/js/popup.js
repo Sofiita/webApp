@@ -8,11 +8,14 @@ $(document).ready(function () {
 		});
     });
 
-	$('#cerrar').on('click', function () {
+	function closePopup() {
 		$('#bgpopUp').fadeOut(500);
 		$('#registrarme').fadeOut(500);
 		enableScroll();
-	});
+	}
+
+	$('#cerrar').on('click', closePopup);
+	$('#bgpopUp').on('close', closePopup)
 
 });
 

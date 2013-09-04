@@ -11,6 +11,7 @@
     <link href='http://fonts.googleapis.com/css?family=Voces' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.scrollTo.min.js"></script>
     <script type="text/javascript" src="js/slider.js"></script>
     <script type="text/javascript" src="js/popup.js"></script>
     <script type="text/javascript" src='js/fullcalendar/fullcalendar.min.js'></script>
@@ -28,14 +29,15 @@
           $(calendar).fullCalendar('select', startDate, endDate, true);
         }
 
-        var calendar = $('#calendar').fullCalendar({
-          
-          dayClick: function(date, allDay, jsEvent, view) {
-            redrawPeriod(date);
-          }
-        });
+        function showCalendar() {
+          var calendar = $('#calendar').fullCalendar({          
+            dayClick: function(date, allDay, jsEvent, view) {
+              redrawPeriod(date);
+            }
+          });
+        }
 
-        function guardarUsuario() {
+        function guardarUsuario(usuario) {
           localStorage.setItem('usuario', JSON.stringify(usuario))
         }
 
@@ -47,21 +49,31 @@
           }
         }
 
-        // Esconder Registro si existe usuario
-        if(obtenerUsuario())
-          $("a#registrarse").hide()
-
-
         // Evento registrar
         $('form#registrarme').on('submit', function () {
-          var usuario = {}
-          var datos = $(this).serializeArray()
+          var usuario = {};
+          var datos = $(this).serializeArray();
           for(var i in datos) {
-            usuario[datos[i].name] = datos[i].value
+            usuario[datos[i].name] = datos[i].value;
           }
-          guardarUsuario(usuario)
+
+          guardarUsuario(usuario);
+
+          $('#bgpopUp').trigger('close');
+          init();
+
           return false;
         });
+
+        function init() {
+          if(obtenerUsuario()) {
+            $("a#registrarse").hide();
+            showCalendar();
+            $.scrollTo("#calendar", 1000);
+          }
+        }
+
+        init();
 
       });
 
