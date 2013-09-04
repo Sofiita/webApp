@@ -1,3 +1,4 @@
+
 body {
 	background-color: white;
 	margin: 0px;
@@ -20,11 +21,11 @@ a {
 	width: 100%;
 	display: inline;
 	height: 75px;
-	background-color: salmon;
+	background-color: #21B2A0;
+	position: fixed;
 	font-family: 'Roboto', sans-serif;
 	list-style: none;
 	float: right;
-	margin-top: 0px;
 }
 
 #container {
@@ -32,7 +33,7 @@ a {
 }
 
 #container p {
-	background-color: salmon;
+	background-color: #FF8753;
 	font-family: 'Bitter', serif;
 	text-align: center;
 	color: white;
@@ -44,20 +45,15 @@ a {
 
 #responsive {
 	margin-left: 22%;
-	margin-top: 30px;
+	margin-top: 8%;
 }
 
 .buttonNav {
 	float: right;
-	box-shadow: inset 0px 1px 0px 0px #ffffff;
-	background-color: #ededed;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
-	border: 1px solid #dcdcdc;
+	background-color: white;
 	display: inline;
-	color: #777777;
+	border: 3px;
+	color:#21B2A0;
 	font-family: 'Voces', cursive;
 	font-size: 15px;
 	font-weight: bold;
@@ -67,53 +63,46 @@ a {
 	width: 100px;
 	text-decoration: none;
 	text-align: center;
-	text-shadow: 1px 1px 0px #ffffff;
 	position: relative;
 	margin-right: 20px;
 	margin-top: 20px;
 }
 
 .buttonNav:hover {
-	background-color: #dfdfdf;
+	background-color: #21B2A0;
+	color: white;
 }
 
 .buttonNav:active {
 	position: relative;
-	top: 1px;
 }
 
 .button {
-	margin-top: 35px;
-	margin-left: 44%;
-	box-shadow: inset 0px 1px 0px 0px #ffffff;
-	background-color: #ededed;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
-	border: 1px solid #dcdcdc;
-	display: block;
-	color: #777777;
-	font-family: 'Voces' ,cursive;
-	font-size: 25px;
+	float: right;
+	background-color: white;
+	display: inline;
+	color: #FF8753;
+	font-family: 'Voces', cursive;
+	font-size: 15px;
 	font-weight: bold;
 	font-style: normal;
-	height: 50px;
-	line-height: 50px;
-	width: 150px;
+	height: 35px;
+	line-height: 35px;
+	width: 100px;
 	text-decoration: none;
 	text-align: center;
-	text-shadow: 1px 1px 0px #ffffff;
 	position: relative;
+	margin-right: 20px;
+	margin-top: 20px;
 }
 
 .button:hover {
-	background-color: #dfdfdf;
+	background-color: #FF8753;
+	color: white;
 }
 
 .button:active {
 	position: relative;
-	top: 1px;
 }
 
 #slider {
@@ -152,7 +141,7 @@ a {
 }
 
 #container .sliderContainer p {
-	background-color: salmon;
+	background-color: #FF8753;
 	font-family: 'Bitter', serif;
 	text-align: center;
 	color: white;
@@ -162,7 +151,7 @@ a {
 }
 
 .formRegistro {
-   	color: #777777;
+   	color: #21B2A0;
    	font-family: voces;
    	margin-left: 38%;
    	float: left;
@@ -174,36 +163,32 @@ a {
    	font-family: voces;
    	font-size: 15px;
    	position: relative;
-   	margin-left: 45%;
+   	margin: 0 auto;
 }
 
 .buttonF {
-	margin-top: 18px;
-	margin-left: 44%;
-	box-shadow: inset 0px 1px 0px 0px #ffffff;
-	background-color: #ededed;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
-	border: 1px solid #dcdcdc;
-	display: block;
-	color: #777777;
-	font-family: 'Voces' ,cursive;
-	font-size: 20px;
+	float: right;
+	background-color: white;
+	display: inline;
+	border: 3px;
+	color: #21B2A0;
+	font-family: 'Voces', cursive;
+	font-size: 15px;
 	font-weight: bold;
 	font-style: normal;
-	height: 50px;
-	line-height: 50px;
-	width: 115px;
+	height: 35px;
+	line-height: 35px;
+	width: 100px;
 	text-decoration: none;
 	text-align: center;
-	text-shadow: 1px 1px 0px #ffffff;
 	position: relative;
+	margin-right: 20px;
+	margin-top: 20px;
 }
 
 .buttonF:hover {
-	background-color: #dfdfdf;
+	background-color: #21B2A0;
+	color: white;
 }
 
 .buttonF:active {
@@ -214,7 +199,6 @@ a {
 #container .formRegistro fieldset {
 	display: block;
 	float: left;
-	border-radius: 5%;
 	margin-left: 10%;
 	padding-left: 8%;
 }
@@ -240,6 +224,6 @@ footer p {
 	font-size: 20px;
 	text-align: center;
 	clear: both;
-	background-color:lightGrey;
+	background-color: #21B2A0;
 	color: white;
 }

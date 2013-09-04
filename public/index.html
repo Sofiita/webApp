@@ -20,10 +20,13 @@
       $(document).ready(function() {
       
         function redrawPeriod(startDate) {
+          startDate.setDate(startDate.getDate() + 28)
           var endDate = new Date(startDate);
-          endDate.setDate(endDate.getDate() + 28);
+          endDate.setDate(endDate.getDate() + 5);
 
-          $(calendar).fullCalendar('select', startDate, endDate, true)
+          $(calendar).fullCalendar('gotoDate',
+            startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+          $(calendar).fullCalendar('select', startDate, endDate, true);
         }
 
         var calendar = $('#calendar').fullCalendar({
@@ -48,7 +51,7 @@
 
   <header>
     <nav id="navigation">
-        <a href="#registrarme" class="buttonNav">Registrarse</a>
+        <a href="#registrarme" class="buttonNav">Registrarme</a>
         <h1>
         <a href="index.html"><span>WebApp</span></a>
         </h1>
@@ -60,7 +63,7 @@
         <p>
             Porque es util saber la fecha de tu proximo periodo, facil y sin <br/>necesidad de calcularlo vos misma te damos un pronostico de tu proximo período y ovulacion 
             <br/> de acuerdo a tu fecha señalada. 
-            <a href="#registrarme" class="button">Registrarse</a>
+            <a href="#registrarme" class="button">Registrarme</a>
         </p>
   <div class="sliderContainer">
       <div id="slider">
@@ -79,7 +82,7 @@
         <div id="registrarme" class="formRegistro">
                      <form id="registrarme" method="get" action="" accept-charset="UTF-8">
                          <fieldset>
-                               <legend>Datos para registrarte</legend>   
+                               <legend>Datos para registrarse</legend>   
                        <label for="text">Nombre</label>
                                    <input type="text" size="30" id="nombre" name="nombre" required placeholder="Escribe tu nombre" />
                        <label for="email">Email</label>
